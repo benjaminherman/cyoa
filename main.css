@@ -1,0 +1,66 @@
+body {
+  margin: 1rem;
+  font-family: serif;
+}
+
+#metabar {
+  position: fixed;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.4rem 1.2rem;
+  background-image: linear-gradient(#d2d2d2, #e7e7e7);
+  border-bottom: #888 1px solid;
+}
+
+.page {
+  max-width: 600px;
+  margin: 4rem auto 6rem;
+}
+
+.page:target ~ .page:last-child,
+.page {
+    display: none;
+}
+
+.page:last-child,
+.page:target {
+    display: block;
+}
+
+p.heading {
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+p.subheading {
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+}
+
+p.bold {
+  font-weight: bold;
+}
+
+ul.choices {
+  list-style: square;
+}
+
+ul.choices li {
+  margin-bottom: 0.4rem;
+}
+
+ul.choices li a:any-link,
+ul.choices li a:visited {
+  text-decoration: none;
+  color: rgb(0, 0, 238);
+}
+
+ul.choices li a:hover {
+  text-decoration: underline;
+}
