@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="cyoa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="xsl/cyoa.xsl"?>
 <book>
   <meta>
     <title>Journey Under The Sea</title>
     <author>R. A. Montgomery</author>
-    <style href="cyoa.css"/>
     <start dest="1"/>
+    <style ref="css/cyoa.css"/>
+    <script ref="js/cyoa.js"/>
   </meta>
   <pages>
     <page number="1">

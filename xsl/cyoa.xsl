@@ -15,35 +15,6 @@
           <xsl:attribute name="content">width=device-width, initial-scale=1.0</xsl:attribute>
         </xsl:element>
         <xsl:apply-templates select="meta/style"/>
-        <xsl:element name="script">
-          <xsl:text>
-            function getPage(number) {
-              return Array.from(document.querySelectorAll('.page'))
-                .find(page => +page.dataset.pageNumber === number);
-            }
-            
-            function initPage(pageElement) {
-              pageElement.hidden = true;
-              pageElement
-                .querySelectorAll('.choice')
-                .forEach(choiceElement => initChoice(choiceElement, pageElement));
-            }
-            
-            function initChoice(choiceElement, pageElement) {
-              choiceElement.addEventListener('click', () => {
-                pageElement.hidden = true;
-                getPage(+choiceElement.dataset.dest).hidden = false;
-              });
-            }
-            
-            document.addEventListener('DOMContentLoaded', () => {
-              document
-                .querySelectorAll('.page')
-                .forEach(pageElement => initPage(pageElement));
-              getPage(+document.body.dataset.start).hidden = false;
-            });
-          </xsl:text>
-        </xsl:element>
       </xsl:element>
       <xsl:element name="body">
         <xsl:attribute name="data-start">
@@ -61,6 +32,7 @@
           </xsl:element>
         </xsl:element>
         <xsl:apply-templates select="pages/page"/>
+        <xsl:apply-templates select="meta/script"/>
       </xsl:element>
     </xsl:element>
   </xsl:template>
@@ -68,7 +40,14 @@
     <xsl:element name="link">
       <xsl:attribute name="rel">stylesheet</xsl:attribute>
       <xsl:attribute name="href">
-        <xsl:value-of select="@href"/>
+        <xsl:value-of select="@ref"/>
+      </xsl:attribute>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="script">
+    <xsl:element name="script">
+      <xsl:attribute name="src">
+        <xsl:value-of select="@ref"/>
       </xsl:attribute>
     </xsl:element>
   </xsl:template>
