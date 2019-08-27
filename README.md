@@ -1,7 +1,7 @@
-# XML+XSLT Choose Your Own Adventure Player
+# XML+XSLT [CYOA](https://www.cyoa.com) Book Player
 Live at https://benjamin-herman.com/cyoa
 
-A JavaScript-free XML Choose Your Own Adventure book player.
+An XML CYOA-style interactive fiction book player.
 
 # License
 [The Unlicense](LICENSE.txt)

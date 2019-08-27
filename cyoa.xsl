@@ -14,6 +14,13 @@
         <xsl:element name="title">
           <xsl:value-of select="meta/title"/>
         </xsl:element>
+        <xsl:if test="meta/description">
+          <xsl:element name="meta">
+            <xsl:attribute name="description">
+              <xsl:value-of select="meta/description"/>
+            </xsl:attribute>
+          </xsl:element>
+        </xsl:if>
         <xsl:element name="meta">
           <xsl:attribute name="name">viewport</xsl:attribute>
           <xsl:attribute name="content">width=device-width, initial-scale=1.0</xsl:attribute>
@@ -28,7 +35,7 @@
       <xsl:element name="body">
         
         <!-- Metabar -->
-        <xsl:element name="div">
+        <xsl:element name="nav">
           <xsl:attribute name="id">metabar</xsl:attribute>
           <xsl:element name="div">
             <xsl:attribute name="class">title</xsl:attribute>
@@ -46,9 +53,20 @@
         </xsl:element>
         
         <!-- Pages -->
-        <xsl:apply-templates select="pages/page">
-          <xsl:sort select="position()" data-type="number" order="descending"></xsl:sort>
-        </xsl:apply-templates>
+        <xsl:element name="main">
+          <xsl:attribute name="id">content</xsl:attribute>
+          <xsl:apply-templates select="pages/page">
+            <xsl:sort select="position()" data-type="number" order="descending"></xsl:sort>
+          </xsl:apply-templates>
+        </xsl:element>
+        
+        <!-- Footer -->
+        <xsl:element name="footer">
+          <xsl:attribute name="id">footer</xsl:attribute>
+          <xsl:element name="p">
+            <xsl:apply-templates select="meta/footer" mode="format"/>
+          </xsl:element>
+        </xsl:element>
       </xsl:element>
     </xsl:element>
   </xsl:template>
