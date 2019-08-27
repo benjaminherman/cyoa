@@ -54,9 +54,12 @@
   <xsl:template match="page">
     <xsl:element name="div">
       <xsl:attribute name="class">page</xsl:attribute>
-      <xsl:attribute name="data-page-number">
+      <xsl:attribute name="data-page">
         <xsl:value-of select="@number"/>
       </xsl:attribute>
+      <xsl:if test="@number != /book/meta/start/@dest">
+        <xsl:attribute name="hidden"/>
+      </xsl:if>
       <xsl:apply-templates select="p"/>
       <xsl:if test="choice">
         <xsl:element name="div">
@@ -81,6 +84,12 @@
       <xsl:attribute name="class">choice</xsl:attribute>
       <xsl:attribute name="data-dest">
         <xsl:value-of select="@dest"/>
+      </xsl:attribute>
+      <xsl:attribute name="onclick">
+        <xsl:text>this.parentElement.parentElement.hidden = true;</xsl:text>
+        <xsl:text>document.querySelector('.page[data-page="</xsl:text>
+        <xsl:value-of select="@dest"/>
+        <xsl:text>"]').hidden = false;</xsl:text>
       </xsl:attribute>
       <xsl:apply-templates select="." mode="format"/>
     </xsl:element>

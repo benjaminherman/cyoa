@@ -6,7 +6,6 @@
     <author>R. A. Montgomery</author>
     <start dest="1"/>
     <style ref="css/cyoa.css"/>
-    <script ref="js/cyoa.js"/>
   </meta>
   <pages>
     <page number="1">

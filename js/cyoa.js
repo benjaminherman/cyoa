@@ -8,7 +8,7 @@ function getPage(number) {
   }
 }
 
-for(const pageElement of pages) {
+/*for(const pageElement of pages) {
   pageElement.hidden = true;
   const choices = pageElement.querySelectorAll('.choice');
   for(const choiceElement of choices) {
@@ -18,6 +18,6 @@ for(const pageElement of pages) {
       getPage(+choiceElement.dataset.dest).hidden = false;
     }
   }
-}
+}*/
 
-getPage(+document.body.dataset.start).hidden = false;
+// getPage(+document.body.dataset.start).hidden = false;
